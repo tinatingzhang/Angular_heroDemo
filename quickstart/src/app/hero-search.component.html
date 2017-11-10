@@ -1,0 +1,9 @@
+<div id="search-component">
+	<h4>Hero Search</h4>
+	<input type="text" #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+	<div>
+		<div *ngFor="let hero of heroes | async" (click)="gotoDetail(hero)" class="search-result">{{hero.name}}</div>
+		<!--async pipe: 此时heroes不再是个单纯的数组，而是一个Observable对象，所以要经过async管道才能给ngFor遍历-->
+		<!--async管道会订阅到这个可观察对象，并且为*ngFor生成一个英雄数组-->
+	</div>
+</div>
